@@ -3,6 +3,6 @@
 
 void myPrintHelloMake(void) {
 
-  std::count << "Hello makefiles!" << std::endl;
+  std::cout << "Hello makefiles!" << std::endl;
   return;
 }
