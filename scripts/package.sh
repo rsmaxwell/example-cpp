@@ -18,4 +18,5 @@ cp ${BUILD_DIR}/${NAME} .
 
 zip ${PROJECT_DIR}/${ZIPFILE} ${NAME}
 
+set -x
 ls -al ${PROJECT_DIR}
