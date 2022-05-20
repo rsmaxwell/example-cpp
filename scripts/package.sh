@@ -2,7 +2,6 @@
 
 
 NAME=example-cpp
-
 ZIPFILE=${NAME}_amd64-linux.zip
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
