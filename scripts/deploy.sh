@@ -11,7 +11,7 @@ REPOSITORY=releases
 REPOSITORYID=releases
 URL=https://pluto.rsmaxwell.co.uk/archiva/repository/${REPOSITORY}
 
-ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
+ZIPFILE=${ARTIFACTID}.${PACKAGING}
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PROJECT_DIR=$(dirname ${SCRIPT_DIR})
