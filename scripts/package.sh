@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 
 NAME=example-cpp
 
@@ -17,7 +16,8 @@ PACKAGE_DIR=${PROJECT_DIR}/package
 rm -rf ${PACKAGE_DIR}
 mkdir -p ${PACKAGE_DIR}
 
-cd ${BUILD_DIR}
-zip ${PACKAGE_DIR}/${ZIPFILE} ${NAME}
+cd ${PACKAGE_DIR}
+cp ${BUILD_DIR}/${NAME} .
 
-tree ${PROJECT_DIR}
+zip ${PROJECT_DIR}/${ZIPFILE} ${NAME}
+
