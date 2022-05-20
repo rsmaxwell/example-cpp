@@ -21,3 +21,4 @@ mvn --batch-mode deploy:deploy-file \
 	-Dfile=${ZIPFILE} \
 	-DrepositoryId=${REPOSITORYID} \
 	-Durl=${URL}
+

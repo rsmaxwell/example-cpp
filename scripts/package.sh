@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NAME=example-cpp
+
 ZIPFILE=${NAME}_amd64-linux.zip
 
 PROJECT_DIR=$(pwd)
@@ -14,3 +15,4 @@ cd ${PACKAGE_DIR}
 cp ${BUILD_DIR}/${NAME} .
 
 zip ${PROJECT_DIR}/${ZIPFILE} ${NAME}
+
