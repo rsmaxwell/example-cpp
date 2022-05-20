@@ -1,12 +1,11 @@
 #!/bin/bash
 
-set -x
-
-BUILD_DIR=./build
+PROJECT_DIR=$(pwd)
+BUILD_DIR=${PROJECT_DIR}/build
 
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-export SOURCE=../src/main/cpp
+export SOURCE=${PROJECT_DIR}/src/main/cpp
 
-make --file ../src/main/make/linux_amd64.makefile $*
+make --file ${PROJECT_DIR}/src/main/make/linux_amd64.makefile $*
