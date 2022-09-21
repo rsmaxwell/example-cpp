@@ -1,3 +1,8 @@
 #!/bin/bash
 
-echo "Hello World!"
+NAME=example-cpp
+PROJECT_DIR=$(pwd)
+BUILD_DIR=${PROJECT_DIR}/build
+
+set -x
+${BUILD_DIR}/${NAME}
