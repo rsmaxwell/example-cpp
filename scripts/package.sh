@@ -17,3 +17,4 @@ cp ${BUILD_DIR}/${NAME} .
 
 zip ${DIST_DIR}/${ZIPFILE} ${NAME}
 
+ls -al ${DIST_DIR}
