@@ -31,14 +31,15 @@ cd ${DIST_DIR}
 
 mvn --batch-mode \
 	--errors \
-	deploy:deploy-file \
+	dependency:get \
 	-DgroupId=${GROUPID} \
 	-DartifactId=${ARTIFACTID} \
 	-Dversion=${VERSION} \
 	-Dpackaging=${PACKAGING} \
 	-Dfile=${ZIPFILE} \
 	-DrepositoryId=${REPOSITORYID} \
-	-Durl=${URL}
+	-DremoteRepositories=${URL} \
+	-Ddest=${ZIPFILE}
 
 result=$?
 if [ ! ${result} -eq 0 ]; then

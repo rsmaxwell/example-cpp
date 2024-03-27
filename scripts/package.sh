@@ -1,18 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-NAME=example-cpp
-
-ZIPFILE=${NAME}_amd64-linux.zip
-
-PROJECT_DIR=$(pwd)
+BASEDIR=$(dirname "$0")
+SCRIPT_DIR=$(cd $(dirname $BASEDIR) && pwd)
+PROJECT_DIR=$(dirname $SCRIPT_DIR)
 BUILD_DIR=${PROJECT_DIR}/build
 PACKAGE_DIR=${PROJECT_DIR}/package
 DIST_DIR=${PROJECT_DIR}/dist
 
-rm -rf ${PACKAGE_DIR}
+. ${BUILD_DIR}/buildinfo
+
+PROJECT=example-cpp
+ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
+VERSION=${BUILD_ID:-SNAPSHOT}
+PACKAGING=zip
+ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
+
+rm -rf ${PACKAGE_DIR} ${DIST_DIR}
 mkdir -p ${PACKAGE_DIR} ${DIST_DIR}
 
 cd ${PACKAGE_DIR}
-cp ${BUILD_DIR}/${NAME} .
+cp ${BUILD_DIR}/${PROJECT} .
 
-zip ${DIST_DIR}/${ZIPFILE} ${NAME}
+zip ${DIST_DIR}/${ZIPFILE} ${PROJECT}
+result=$?
+if [ ! ${result} -eq 0 ]; then
+    echo "packaging failed"
+    echo "Error: $0[${LINENO}] result: ${result}"
+    exit 1
+fi
+
+echo "Success"
+

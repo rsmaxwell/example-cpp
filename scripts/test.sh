@@ -1,9 +1,12 @@
 #!/bin/sh
 
-PROJECT=example-cpp
-PROJECT_DIR=$(pwd)
+BASEDIR=$(dirname "$0")
+SCRIPT_DIR=$(cd $(dirname $BASEDIR) && pwd)
+PROJECT_DIR=$(dirname $SCRIPT_DIR)
 BUILD_DIR=${PROJECT_DIR}/build
 TEST_DIR=${PROJECT_DIR}/test
+
+PROJECT=example-cpp
 
 
 
