@@ -15,12 +15,8 @@ PACKAGING=zip
 
 if [ -z "${BUILD_ID}" ]; then
     VERSION="0.0-SNAPSHOT"
-    REPOSITORY=snapshots
-    REPOSITORYID=snapshots
 else
     VERSION=${BUILD_ID}
-    REPOSITORY=releases
-    REPOSITORYID=releases
 fi
 
 ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
