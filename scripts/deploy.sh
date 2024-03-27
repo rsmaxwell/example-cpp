@@ -14,7 +14,7 @@ ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
 PACKAGING=zip
 
 if [ -z "${BUILD_ID}" ]; then
-    VERSION=SNAPSHOT
+    VERSION="0.0-SNAPSHOT"
     REPOSITORY=snapshots
     REPOSITORYID=snapshots
 else
