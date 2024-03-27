@@ -30,7 +30,6 @@ ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
 
 cd ${DIST_DIR}
 
-set -x
 mvn --batch-mode --errors dependency:get \
 	-DremoteRepositories=${URL} \
 	-DgroupId=${GROUPID} \
@@ -39,7 +38,6 @@ mvn --batch-mode --errors dependency:get \
 	-Dpackaging=${PACKAGING} \
 	-Dtransitive=false
 result=$?
-set +x
 if [ ! ${result} -eq 0 ]; then
     echo "deployment failed"
     echo "Error: $0[${LINENO}] result: ${result}"
@@ -49,12 +47,10 @@ fi
 
 mkdir -p ${DOWNLOADS_DIR}
 
-set -x
 mvn --batch-mode --errors dependency:copy \
 	-Dartifact=${GROUPID}:${ARTIFACTID}:${VERSION}:${PACKAGING} \
 	-DoutputDirectory=${DOWNLOADS_DIR}
 result=$?
-set +x
 if [ ! ${result} -eq 0 ]; then
     echo "deployment failed"
     echo "Error: $0[${LINENO}] result: ${result}"
