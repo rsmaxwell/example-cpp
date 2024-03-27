@@ -17,16 +17,14 @@ PACKAGING=zip
 if [ -z "${BUILD_ID}" ]; then
     VERSION="0.0-SNAPSHOT"
     REPOSITORY=snapshots
-    REPOSITORYID=snapshots
 else
     VERSION=${BUILD_ID}
     REPOSITORY=releases
-    REPOSITORYID=releases
 fi
 
 URL=https://pluto.rsmaxwell.co.uk/archiva/repository/${REPOSITORY}
 
-ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
+
 
 cd ${DIST_DIR}
 
