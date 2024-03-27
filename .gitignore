@@ -1,4 +1,6 @@
 build/
+dist/
 package/
-testing/
+test/
 *.zip
+src/main/cpp/version.h
