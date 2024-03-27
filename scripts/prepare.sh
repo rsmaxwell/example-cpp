@@ -1,8 +1,5 @@
 #!/bin/sh
 
-BASEDIR=$(dirname "$0")
-SCRIPT_DIR=$(cd $(dirname $BASEDIR) && pwd)
-
 if [ -z "${BUILD_ID}" ]; then
     BUILD_ID="(none)"
     VERSION="SNAPSHOT"
@@ -24,6 +21,8 @@ export GIT_URL
 
 tags='$VERSION,$BUILD_ID,$TIMESTAMP,$GIT_COMMIT,$GIT_BRANCH,$GIT_URL'
 
+BASEDIR=$(dirname "$0")
+SCRIPT_DIR=$(cd $BASEDIR && pwd)
 PROJECT_DIR=$(dirname $SCRIPT_DIR)
 SOURCE_DIR=${PROJECT_DIR}/src
 TEMPLATES_DIR=${PROJECT_DIR}/templates
