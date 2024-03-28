@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 if [ -z "${BUILD_ID}" ]; then
     BUILD_ID="(none)"
     VERSION="SNAPSHOT"
@@ -33,5 +34,4 @@ find . -type f | while read filename; do
     echo "Replacing tags in ${filename}"
     envsubst "${tags}" < ${filename} > ${SOURCE_DIR}/${filename}
 done
-
 

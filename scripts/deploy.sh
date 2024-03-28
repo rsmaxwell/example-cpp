@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 BASEDIR=$(dirname "$0")
 SCRIPT_DIR=$(cd $BASEDIR && pwd)
 PROJECT_DIR=$(dirname $SCRIPT_DIR)
@@ -12,16 +13,6 @@ PROJECT=example-cpp
 GROUPID=com.rsmaxwell.example
 ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
 PACKAGING=zip
-
-if [ -z "${BUILD_ID}" ]; then
-    VERSION="0.0-SNAPSHOT"
-    REPOSITORY=snapshots
-    REPOSITORYID=snapshots
-else
-    VERSION=${BUILD_ID}
-    REPOSITORY=releases
-    REPOSITORYID=releases
-fi
 
 URL=https://pluto.rsmaxwell.co.uk/archiva/repository/${REPOSITORY}
 
@@ -39,13 +30,4 @@ mvn --batch-mode \
 	-Dfile=${ZIPFILE} \
 	-DrepositoryId=${REPOSITORYID} \
 	-Durl=${URL}
-
-result=$?
-if [ ! ${result} -eq 0 ]; then
-    echo "deployment failed"
-    echo "Error: $0[${LINENO}] result: ${result}"
-    exit 1
-fi
-
-echo "Success"
 
