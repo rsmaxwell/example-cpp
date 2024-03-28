@@ -19,7 +19,7 @@ rm -rf ${PACKAGE_DIR} ${DIST_DIR}
 mkdir -p ${PACKAGE_DIR} ${DIST_DIR}
 
 cd ${PACKAGE_DIR}
-cp ${BUILD_DIR}/${PROJECT} .
+cp ${BUILD_DIR}/example-cpp .
 
-zip ${DIST_DIR}/${ZIPFILE} example-cpp
+zip ${DIST_DIR}/${ZIPFILE} *
 

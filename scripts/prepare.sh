@@ -29,7 +29,7 @@ if [ -z "${BUILD_ID}" ]; then
     REPOSITORY=snapshots
     REPOSITORYID=snapshots
 else
-    VERSION=${BUILD_ID}
+    VERSION="0.0.$((${BUILD_ID}))"
     REPOSITORY=releases
     REPOSITORYID=releases
 fi
@@ -38,14 +38,17 @@ fi
 BASEDIR=$(dirname "$0")
 SCRIPT_DIR=$(cd $BASEDIR && pwd)
 PROJECT_DIR=$(dirname $SCRIPT_DIR)
+SOURCE_DIR=${PROJECT_DIR}/src
 BUILD_DIR=${PROJECT_DIR}/build
-   
-   
+TEMPLATES_DIR=${PROJECT_DIR}/templates
+PROJECT=example-cpp
+
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 
 cat > buildinfo <<EOL
+PROJECT="${PROJECT}"
 FAMILY="${FAMILY}"
 ARCHITECTURE="${ARCHITECTURE}"
 VERSION="${VERSION}"
@@ -56,17 +59,8 @@ EOL
 pwd
 ls -al 
 cat buildinfo
-   
-   
-   
-   
 
-if [ -z "${BUILD_ID}" ]; then
-    BUILD_ID="(none)"
-    VERSION="SNAPSHOT"
-else
-    VERSION="0.0.$((${BUILD_ID}))"
-fi
+
 
 TIMESTAMP="$(date '+%Y-%m-%d %H:%M:%S')"
 GIT_COMMIT="${GIT_COMMIT:-(none)}"
@@ -82,11 +76,7 @@ export GIT_URL
 
 tags='$VERSION,$BUILD_ID,$TIMESTAMP,$GIT_COMMIT,$GIT_BRANCH,$GIT_URL'
 
-BASEDIR=$(dirname "$0")
-SCRIPT_DIR=$(cd $BASEDIR && pwd)
-PROJECT_DIR=$(dirname $SCRIPT_DIR)
-SOURCE_DIR=${PROJECT_DIR}/src
-TEMPLATES_DIR=${PROJECT_DIR}/templates
+
 
 cd ${TEMPLATES_DIR}
 
