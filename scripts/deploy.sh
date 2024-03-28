@@ -13,16 +13,12 @@ PROJECT=example-cpp
 GROUPID=com.rsmaxwell.example
 ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
 PACKAGING=zip
-
 URL=https://pluto.rsmaxwell.co.uk/archiva/repository/${REPOSITORY}
-
 ZIPFILE=${ARTIFACTID}_${VERSION}.${PACKAGING}
 
 cd ${DIST_DIR}
 
-mvn --batch-mode \
-	--errors \
-	deploy:deploy-file \
+mvn --batch-mode --errors deploy:deploy-file \
 	-DgroupId=${GROUPID} \
 	-DartifactId=${ARTIFACTID} \
 	-Dversion=${VERSION} \

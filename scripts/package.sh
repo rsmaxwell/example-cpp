@@ -22,3 +22,4 @@ cd ${PACKAGE_DIR}
 cp ${BUILD_DIR}/${PROJECT} .
 
 zip ${DIST_DIR}/${ZIPFILE} example-cpp
+
