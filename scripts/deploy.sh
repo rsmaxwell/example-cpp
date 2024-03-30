@@ -7,7 +7,8 @@ PROJECT_DIR=$(dirname $SCRIPT_DIR)
 BUILD_DIR=${PROJECT_DIR}/build
 DIST_DIR=${PROJECT_DIR}/dist
 
-. ${BUILD_DIR}/buildinfo
+. ${BUILD_DIR}/versioninfo
+. ${BUILD_DIR}/machineinfo
 
 GROUPID=com.rsmaxwell.example
 ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}

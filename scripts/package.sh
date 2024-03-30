@@ -8,7 +8,8 @@ BUILD_DIR=${PROJECT_DIR}/build
 PACKAGE_DIR=${PROJECT_DIR}/package
 DIST_DIR=${PROJECT_DIR}/dist
 
-. ${BUILD_DIR}/buildinfo
+. ${BUILD_DIR}/versioninfo
+. ${BUILD_DIR}/machineinfo
 
 ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
 PACKAGING=zip

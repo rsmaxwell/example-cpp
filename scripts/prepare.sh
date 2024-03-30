@@ -1,28 +1,6 @@
 #!/bin/sh
 
 
-FAMILY=""
-ARCHITECTURE=""
-
-case "$(uname -s)" in
-    CYGWIN*) FAMILY="cygwin" ;;
-    Linux*) 
-        . /etc/os-release
-        case ${ID} in
-            ubuntu) FAMILY="linux" ;;
-            alpine) FAMILY="alpine" ;;
-            *) FAMILY="linux" ;;
-        esac
-        ;;
-    *) FAMILY="unknown" ;;
-esac
-
-case "$(uname -m)" in 
-  amd64|x86_64)   ARCHITECTURE="amd64" ;; 
-  *) ARCHITECTURE="x86" ;; 
-esac 
-
-
 if [ -z "${BUILD_ID}" ]; then
     BUILD_ID="(none)"
     VERSION="0.0.1-SNAPSHOT"
@@ -47,10 +25,10 @@ mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 
-cat > buildinfo <<EOL
+
+
+cat > versioninfo <<EOL
 PROJECT="${PROJECT}"
-FAMILY="${FAMILY}"
-ARCHITECTURE="${ARCHITECTURE}"
 VERSION="${VERSION}"
 REPOSITORY="${REPOSITORY}"
 REPOSITORYID="${REPOSITORYID}"
@@ -58,7 +36,7 @@ EOL
 
 pwd
 ls -al 
-cat buildinfo
+cat versioninfo
 
 
 
@@ -75,8 +53,6 @@ export GIT_BRANCH
 export GIT_URL
 
 tags='$VERSION,$BUILD_ID,$TIMESTAMP,$GIT_COMMIT,$GIT_BRANCH,$GIT_URL'
-
-
 
 cd ${TEMPLATES_DIR}
 
