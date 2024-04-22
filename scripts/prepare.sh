@@ -51,7 +51,7 @@ TEMPLATES_DIR=${PROJECT_DIR}/templates
 
 
 
-PROJECT=example-c
+PROJECT=example-cpp
 GROUPID=com.rsmaxwell.example
 ARTIFACTID=${PROJECT}_${FAMILY}_${ARCHITECTURE}
 PACKAGING=zip
