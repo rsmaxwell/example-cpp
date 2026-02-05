@@ -2,25 +2,21 @@
 
 set -x 
 
-FAMILY=""
-ARCHITECTURE=""
-
-case "$(uname -s)" in
-    CYGWIN*) FAMILY="cygwin" ;;
-    Linux*) 
-        . /etc/os-release
-        case ${ID} in
-            ubuntu) FAMILY="linux" ;;
-            alpine) FAMILY="alpine" ;;
-            *) FAMILY="linux" ;;
-        esac
-        ;;
-    *) FAMILY="unknown" ;;
+# Check required env variables are set
+case "$FAMILY" in
+  alpine|linux) ;;
+  *)
+    echo "ERROR: invalid FAMILY='$FAMILY' (allowed: alpine|linux)" >&2
+    exit 2
+    ;;
 esac
 
-case "$(uname -m)" in 
-  amd64|x86_64)   ARCHITECTURE="amd64" ;; 
-  *) ARCHITECTURE="x86" ;; 
+case "$ARCHITECTURE" in
+  amd64|arm64) ;;
+  *)
+    echo "ERROR: invalid ARCHITECTURE='$ARCHITECTURE' (allowed: amd64|arm64)" >&2
+    exit 2
+    ;;
 esac
 
 
