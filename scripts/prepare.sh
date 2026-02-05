@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+set -e
 set -x 
 
 # Check required env variables are set
@@ -79,10 +80,10 @@ tags='$FAMILY,$ARCHITECTURE,$PROJECT,$REPOSITORY,$REPOSITORYID,$VERSION,$BUILD_I
 
 find . -type f | while read filename; do
     echo "Writing ${filename}"
-    file=${SOURCE_DIR}/${filename}
-    dir=${directory ${file}}
-    mkdir -p ${dir}
-    envsubst "${tags}" < ${filename} > ${file}
+    file="${SOURCE_DIR}/${filename}"
+    dir="$(dirname "$file")"
+    mkdir -p "$dir"
+    envsubst "$tags" < "$filename" > "$file"
 done
 
 
