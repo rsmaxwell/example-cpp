@@ -29,8 +29,8 @@ if [ -z "${BUILD_ID}" ]; then
     REPOSITORYID=snapshots
 else
     VERSION="0.0.1.$((${BUILD_ID}))"
-    REPOSITORY=releases
-    REPOSITORYID=releases
+    REPOSITORY=integration
+    REPOSITORYID=integration
 fi
 
 
